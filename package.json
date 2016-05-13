@@ -1,0 +1,43 @@
+{
+  "name": "profile-fellyph-react",
+  "version": "1.0.0",
+  "description": "Fellyph's online Profile",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fellyph/profile-react.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Fellyph Cintra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fellyph/profile-react/issues"
+  },
+  "homepage": "https://github.com/fellyph/profile-react#readme",
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-polyfill": "^6.8.0",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.12.5",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.4",
+    "gulp-if": "^2.0.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "run-sequence": "^1.1.5",
+    "sass": "^0.5.0"
+  }
+}
