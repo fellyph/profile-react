@@ -28,10 +28,36 @@ a {
 
 .main {
   margin: 2.5em 1.5em;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .about {
 }
 
 .social {
+}
+
+.skills {
+  padding: 0;
+  margin: 0;
+
+  .skill {
+    background: white;
+    color: black;
+    display: inline-block;
+    padding: 0.3em;
+    margin-right: 0.3em
+  }
+}
+
+.jobs {
+  
+  .job {
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
