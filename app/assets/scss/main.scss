@@ -13,6 +13,38 @@ a {
   padding: 0.1em 0.2em;
 }
 
+/*
+ * header
+ */
+
+.header {
+  padding-top: 2em;
+}
+
+.social {
+  text-align: right;
+
+  .links {
+    list-style: none;
+
+    .item {
+      display: inline-block;
+      margin-left: 0.5em;
+      cursor: pointer;
+    }
+
+    a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      border-radius: 50%;
+      background-color: white;
+      text-indent: 9999px;
+    }
+  }
+}
+
 .hello {
   font-size: 4em;
   font-weight: bold;
@@ -47,17 +79,53 @@ a {
     color: black;
     display: inline-block;
     padding: 0.3em;
-    margin-right: 0.3em
+    margin-right: 0.3em;
+    font-style: italic;
   }
 }
 
+/*
+ * jobs
+ */
+
 .jobs {
-  
+  column-count: 4;
   .job {
+    display: inline-block;
+    margin: 0 0 1.2em;
+    width: 100%;
+    break-inside: avoid-column;
+    background-color: #1a1a1a;
 
     img {
       max-width: 100%;
       height: auto;
+    }
+  }
+
+  .title {
+    font-weight: normal;
+    padding: 0.8em 0.8em 0.3em 0.8em;
+    margin-bottom: 0;
+  }
+
+  .fetures {
+    padding: 0 0.8em 0.8em 0.8em;
+    margin: 0;
+    list-style: none;
+    font-size: 0.8em;
+
+    li {
+      margin-bottom: 0.2em;
+    }
+
+    a {
+      background: black;
+      color: white;
+      &:hover {
+        background: white;
+        color: black;
+      }
     }
   }
 }
