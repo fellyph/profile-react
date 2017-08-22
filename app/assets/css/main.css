@@ -65,7 +65,10 @@ a {
  * jobs
  */
 .jobs {
-  column-count: 4; }
+  column-count: 4;
+  width: 100%; }
+  .jobs .thumb {
+    margin: 0; }
   .jobs .job {
     display: inline-block;
     margin: 0 0 1.2em;
@@ -77,8 +80,11 @@ a {
       height: auto; }
   .jobs .title {
     font-weight: normal;
-    padding: 0.8em 0.8em 0.3em 0.8em;
+    padding: 0.8rem 0.8rem 0.3rem 0.8rem;
     margin-bottom: 0; }
+  .jobs .description {
+    padding: 0 0.8rem;
+    font-size: 0.8em; }
   .jobs .fetures {
     padding: 0 0.8em 0.8em 0.8em;
     margin: 0;

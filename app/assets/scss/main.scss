@@ -90,6 +90,12 @@ a {
 
 .jobs {
   column-count: 4;
+  width: 100%;
+
+  .thumb {
+    margin: 0;
+  }
+
   .job {
     display: inline-block;
     margin: 0 0 1.2em;
@@ -105,8 +111,13 @@ a {
 
   .title {
     font-weight: normal;
-    padding: 0.8em 0.8em 0.3em 0.8em;
+    padding: 0.8rem 0.8rem 0.3rem 0.8rem;
     margin-bottom: 0;
+  }
+
+  .description {
+    padding: 0 0.8rem;
+    font-size: 0.8em;
   }
 
   .fetures {
