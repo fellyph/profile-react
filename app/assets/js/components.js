@@ -1,3 +1,7 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import axios from 'axios'
+
 class PortfolioItem extends React.Component {
   render() {
     return (
@@ -13,7 +17,6 @@ class PortfolioItem extends React.Component {
 }
 
 let PortfolioList = React.createClass({
-
   getInitialState: function() {
       return {
         jobs: []
