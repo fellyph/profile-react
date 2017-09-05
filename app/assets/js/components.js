@@ -1,34 +1,34 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import PortfolioItem from './portfolio/portfolioItem'
 
-let PortfolioList = React.createClass({
-  getInitialState: function() {
-      return {
-        jobs: []
-      };
-  },
-
-  componentDidMount: function() {
+class PortfolioList extends Component {
+  constructor() {
+    super()
+    this.state = {
+      jobs : []
+    }
+  }
+  componentDidMount() {
     var _this = this;
     this.serverRequest =
       axios
         .get(this.props.source)
-        .then(function(result) {
+        .then((result) => {
           _this.setState({
             jobs: result.data
           });
         })
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount () {
     this.serverRequest.abort()
-  },
+  }
 
-  render: function() {
+  render () {
     let jobsList = [];
-    this.state.jobs.forEach ( function(job) {
+    this.state.jobs.forEach ( (job) => {
       jobsList.push(<PortfolioItem key={job.id} name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} />);
     });
 
@@ -38,7 +38,7 @@ let PortfolioList = React.createClass({
       </div>
     );
   }
-})
+}
 
 ReactDOM.render(
   <PortfolioList source="http://fellyph.com.br/blog/wp-json/wp/v2/portfolio"/>, document.getElementById('jobs')
