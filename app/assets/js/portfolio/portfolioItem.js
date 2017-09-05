@@ -15,6 +15,4 @@ class PortfolioItem extends Component {
   }
 }
 
-
-
 export default PortfolioItem
