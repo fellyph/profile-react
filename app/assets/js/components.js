@@ -1,19 +1,9 @@
-class PortfolioItem extends React.Component {
-  render() {
-    return (
-      <article className="job">
-        <figure className="thumb">
-          <img src={this.props.image} alt={this.props.alt} />
-        </figure>
-        <h4 className="title">{this.props.name}</h4>
-        <div className="description" dangerouslySetInnerHTML={{__html: this.props.technologies}} />
-      </article>
-    )
-  }
-}
+import React from 'react'
+import ReactDOM from 'react-dom'
+import axios from 'axios'
+import PortfolioItem from './portfolio/portfolioItem'
 
 let PortfolioList = React.createClass({
-
   getInitialState: function() {
       return {
         jobs: []
@@ -39,7 +29,7 @@ let PortfolioList = React.createClass({
   render: function() {
     let jobsList = [];
     this.state.jobs.forEach ( function(job) {
-      jobsList.push(<PortfolioItem name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} />);
+      jobsList.push(<PortfolioItem key={job.id} name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} />);
     });
 
     return (

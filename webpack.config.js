@@ -1,3 +1,7 @@
+'use strict'
+
+const webpack = require('webpack')
+
 module.exports = {
   devtool: 'source-map',
   entry: './app/assets/js/main.js',
