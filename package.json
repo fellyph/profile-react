@@ -40,10 +40,18 @@
     "react-loader": "^2.4.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9"
+    "url-loader": "^0.5.9",
+    "webpack-server": "^0.1.2"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "chalk": "^2.1.0",
+    "connect": "^3.6.3",
+    "favicon": "0.0.2",
+    "serve": "^6.0.6",
+=======
     "axios": "^0.16.2",
+>>>>>>> 3cd6c5efd0504cb63ec46526f02c369fff282db5
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
