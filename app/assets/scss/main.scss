@@ -37,12 +37,24 @@ a {
 
     a {
       display: inline-block;
-      width: 30px;
-      height: 30px;
-      overflow: hidden;
+      width: 40px;
       border-radius: 50%;
-      background-color: white;
-      text-indent: 9999px;
+      background-color: black;
+      color: #333;
+      font-size: 2.2em;
+      text-align: center;
+      padding: 0.3em;
+      background-image: radial-gradient(circle at center, white 50%, black 50%);
+      background-size: 200%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transition: 200ms all linear;
+      border: 3px solid white;
+
+      &:hover {
+        background-position: 200%;
+        color: white;
+      }     
     }
   }
 }
@@ -65,6 +77,16 @@ a {
   max-width: 960px;
   margin: 0 auto;
 }
+
+/*
+ * about
+ */
+.about {
+  p {
+    margin: 0 0 1em 0;
+  }
+}
+
 
 .skills {
   padding: 0;
