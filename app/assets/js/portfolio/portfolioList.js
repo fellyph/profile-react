@@ -11,6 +11,7 @@ class PortfolioList extends Component {
       jobs : []
     }
   }
+  
   componentDidMount() {
     this.serverRequest =
       axios
