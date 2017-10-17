@@ -10,8 +10,8 @@ module.exports = {
   entry: './app/assets/js/main.js',
   output: {
     path: __dirname + '/build',
-    publicPath: '/build/',
-    filename: 'bundle.js'
+    publicPath: '',
+    filename: '[name]-[hash].js'
   },
   module: {
     rules: [
@@ -29,7 +29,19 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env' : {
+        'NODE_ENV' : '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin('style.css'),
-    new HTMLPlugin()
+    new HTMLPlugin({
+      title: 'Fellyph Cintra - Front-end Developer',
+      template: path.join(__dirname, 'app', 'html', 'template.html')
+    })
   ]
 }
