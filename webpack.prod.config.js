@@ -38,6 +38,7 @@ module.exports = {
       compress: {warnings: false}
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new DashboardPlugin(),
     new ExtractTextPlugin('style.css'),
     new HTMLPlugin({
       title: 'Fellyph Cintra - Front-end Developer',

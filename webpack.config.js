@@ -5,6 +5,7 @@ const webpack = require('webpack')
 
 const HTMLPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -31,6 +32,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
+    new DashboardPlugin(),
     new HTMLPlugin({
       title: 'Fellyph Cintra - Front-end Developer',
       template: path.join(__dirname, 'app', 'html', 'template.html')
