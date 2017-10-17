@@ -7,12 +7,11 @@ const HTMLPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  devtool: 'source-map',
   entry: './app/assets/js/main.js',
   output: {
     path: __dirname + '/build',
-    publicPath: '',
-    filename: '[name]-[hash].js'
+    publicPath: '/build/',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -31,9 +30,6 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
-    new HTMLPlugin({
-      title: 'Fellyph Cintra - Front-end Developer',
-      template: path.join(__dirname, 'app', 'html', 'template.html')
-    })
+    new HTMLPlugin()
   ]
 }
