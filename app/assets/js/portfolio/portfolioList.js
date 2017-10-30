@@ -1,35 +1,17 @@
 'use strict'
 
-import React, {Component} from 'react'
-import axios from 'axios'
+import React, {PropTypes} from 'react'
 import PortfolioItem from './portfolioItem'
 
-class PortfolioList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      jobs : []
-    }
-  }
+const PortfolioList = ({jobs = []}) => (
+  <section className="jobs">
+    <h2>Portfolio</h2>
+    {jobs.map( (job) => <PortfolioItem key={job.id} name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} /> )}
+  </section>
+)
 
-  componentDidMount() {
-    this.serverRequest =
-      axios
-        .get(this.props.source)
-        .then((result) => this.setState({ jobs: result.data}));
-  }
-
-  componentWillUnmount () {
-    this.serverRequest.abort()
-  }
-
-  render () {
-    return (
-      <div className="jobs">
-        {this.state.jobs.map( (job) => <PortfolioItem key={job.id} name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} /> )}
-      </div>
-    );
-  }
+PortfolioList.propTypes = {
+  jobs: PropTypes.array
 }
 
 export default PortfolioList
