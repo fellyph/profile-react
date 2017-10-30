@@ -5,10 +5,8 @@ const webpack = require('webpack')
 
 const HTMLPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 module.exports = {
-  devtool: 'source-map',
   entry: './app/assets/js/main.js',
   output: {
     path: __dirname + '/build',
@@ -31,8 +29,17 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new webpack.DefinePlugin({
+      'process.env' : {
+        'NODE_ENV' : '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new DashboardPlugin(),
+    new ExtractTextPlugin('style.css'),
     new HTMLPlugin({
       title: 'Fellyph Cintra - Front-end Developer',
       template: path.join(__dirname, 'app', 'html', 'template.html')
