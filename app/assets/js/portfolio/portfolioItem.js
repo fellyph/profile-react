@@ -11,7 +11,7 @@ const PortfolioItem = ({imageUrl, imageAlt, imageCaption, title, content}) => (
   </article>
 )
 
-Actions.propTypes = {
+PortfolioItem.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   imageAlt: PropTypes.string.isRequired,
   imageCaption: PropTypes.string,
