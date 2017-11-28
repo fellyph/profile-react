@@ -5,15 +5,15 @@ import axios from 'axios'
 import PortfolioList from './portfolio/portfolioList'
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
-      jobs : [],
-      source : 'https://blog.fellyph.com.br/wp-json/wp/v2/portfolio'
+      jobs: [],
+      source: 'https://blog.fellyph.com.br/wp-json/wp/v2/portfolio'
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.serverRequest =
       axios
         .get(this.state.source)

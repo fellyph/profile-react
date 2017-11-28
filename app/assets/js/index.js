@@ -14,9 +14,19 @@ const renderApp = (NextApp) => {
 
 renderApp(App)
 
-if(module.hot) {
+if (module.hot) {
   module.hot.accept('./app', () => {
     const NextApp = require('./app').default
     renderApp(NextApp)
+  })
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    })
   })
 }
