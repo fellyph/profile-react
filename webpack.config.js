@@ -39,7 +39,7 @@ module.exports = {
       template: path.join(__dirname, 'app', 'html', 'template.html')
     }),
     new WorkboxPlugin({
-      globDirectory: dist,
+      globDirectory: './',
       globPatterns: ['**/*.{html,js}'],
       swDest: path.join(dist, 'sw.js'),
       clientsClaim: true,

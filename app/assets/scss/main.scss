@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Arvo:400,400italic,700");
+@import 'variable';
+@import 'fonts';
 
 body {
-  background-color: black;
-  color: white;
+  background-color: $primary;
+  color: $secondary;
   font-family: 'Arvo', serif;
   margin: 0;
   padding: 0;
 }
 
 a {
-  background-color: white;
-  color: black;
+  background-color: $secondary;
+  color: $primary;
   text-decoration: none;
   padding: 0.1em 0.2em;
 }
@@ -28,7 +29,7 @@ a {
 
   .links {
     list-style: none;
-
+    padding: 0;
     .item {
       display: inline-block;
       margin-left: 0.5em;
@@ -37,24 +38,24 @@ a {
 
     a {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background-color: black;
+      background-color: $primary;
       color: #333;
-      font-size: 2.2em;
+      font-size: 1.8em;
       text-align: center;
       padding: 0.3em;
-      background-image: radial-gradient(circle at center, white 50%, black 50%);
+      background-image: radial-gradient(circle at center, $secondary 50%, $primary 50%);
       background-size: 200%;
       background-repeat: no-repeat;
       background-position: 50%;
       transition: 200ms all linear;
-      border: 3px solid white;
+      border: 3px solid $secondary;
 
       &:hover {
         background-position: 200%;
-        color: white;
+        color: $secondary;
       }
     }
   }
@@ -74,9 +75,10 @@ a {
 }
 
 .main {
-  margin: 2.5em 1.5em;
+  box-sizing: border-box;
   max-width: 960px;
   margin: 0 auto;
+  padding: 0.5em;
 }
 
 /*
@@ -94,8 +96,8 @@ a {
   margin: 0;
 
   .skill {
-    background: white;
-    color: black;
+    background: $secondary;
+    color: $primary;
     display: inline-block;
     padding: 0.3em;
     margin-right: 0.3em;
@@ -150,11 +152,11 @@ a {
     }
 
     a {
-      background: black;
-      color: white;
+      background: $primary;
+      color: $secondary;
       &:hover {
-        background: white;
-        color: black;
+        background: $secondary;
+        color: $primary;
       }
     }
   }
