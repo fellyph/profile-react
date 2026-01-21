@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortfolioItem Component should match snapshot 1`] = `
+<article
+  className="job"
+>
+  <div
+    data-imagealt="Portfolio project screenshot"
+    data-imageurl="https://example.com/portfolio.jpg"
+    data-testid="mock-thumb"
+  />
+  <h4
+    className="title"
+  >
+    My Awesome Project
+  </h4>
+  <div
+    className="description"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>This is a project description</p>",
+      }
+    }
+  />
+</article>
+`;

@@ -6,7 +6,7 @@ import PortfolioItem from './portfolioItem'
 const PortfolioList = ({jobs = []}) => (
   <section className="jobs">
     <h2>Portfolio</h2>
-    {jobs.map( (job) => <PortfolioItem key={job.id} name={job.title.rendered} technologies={job.content.rendered} image={job.thumbnail_url} alt={job.title.rendered} /> )}
+    {jobs.map( (job) => <PortfolioItem key={job.id} title={job.title.rendered} content={job.content.rendered} imageUrl={job.thumbnail_url} imageAlt={job.title.rendered} /> )}
   </section>
 )
 

@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/fellyph/profile-react#readme",
   "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "react-test-renderer": "^15.6.1",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -35,7 +37,6 @@
     "babelify": "^7.3.0",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^2.1.2",
-    "farmhash": "^2.0.4",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
     "jest-cli": "^21.2.1",
