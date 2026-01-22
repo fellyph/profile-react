@@ -9,12 +9,15 @@ const dist = 'build'
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
-  entry: './app/assets/js/main.js',
+  entry: './app/assets/js/main.ts',
   output: {
     path: path.resolve(__dirname, dist),
     publicPath: '/',
     filename: '[name]-[contenthash].js',
     clean: true
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -37,7 +40,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
-        test: /\.js$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       }

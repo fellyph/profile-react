@@ -7,12 +7,15 @@ const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
   mode: 'production',
-  entry: './app/assets/js/main.js',
+  entry: './app/assets/js/main.ts',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '',
     filename: '[name]-[contenthash].js',
     clean: true
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -35,7 +38,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
-        test: /\.js$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       }
