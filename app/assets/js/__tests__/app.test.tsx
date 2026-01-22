@@ -1,65 +1,55 @@
-'use strict';
-
-import React from 'react';
 import renderer, { act } from 'react-test-renderer';
 import App from '../app';
 import axios from 'axios';
+import { Job } from '../types';
 
-// Mock PortfolioList to isolate App tests
 jest.mock('../portfolio/portfolioList', () => {
-  return function MockPortfolioList(props) {
+  return function MockPortfolioList(props: { jobs: Job[] }) {
     return (
-      <div
-        data-testid="mock-portfolio-list"
-        data-jobs={JSON.stringify(props.jobs)}
-      />
+      <div data-testid="mock-portfolio-list" data-jobs={JSON.stringify(props.jobs)} />
     );
   };
 });
 
-// axios is auto-mocked from __mocks__/axios.js
-
 describe('App Component', () => {
-  const mockPortfolioData = [
+  const mockPortfolioData: Job[] = [
     {
       id: 1,
       title: { rendered: 'Project One' },
       content: { rendered: '<p>Description one</p>' },
-      thumbnail_url: 'https://example.com/thumb1.jpg'
+      thumbnail_url: 'https://example.com/thumb1.jpg',
     },
     {
       id: 2,
       title: { rendered: 'Project Two' },
       content: { rendered: '<p>Description two</p>' },
-      thumbnail_url: 'https://example.com/thumb2.jpg'
-    }
+      thumbnail_url: 'https://example.com/thumb2.jpg',
+    },
   ];
 
   beforeEach(() => {
-    // Reset all mocks before each test
     jest.clearAllMocks();
-
-    // Setup default mock response
-    axios.get.mockImplementation(() => Promise.resolve({ data: mockPortfolioData }));
+    (axios.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: mockPortfolioData })
+    );
   });
 
   it('should render without crashing', () => {
-    let component;
+    let component: renderer.ReactTestRenderer;
     act(() => {
       component = renderer.create(<App />);
     });
-    const tree = component.toJSON();
+    const tree = component!.toJSON();
     expect(tree).not.toBeNull();
   });
 
   it('should initialize with empty jobs array', () => {
-    let component;
+    let component: renderer.ReactTestRenderer;
     act(() => {
       component = renderer.create(<App />);
     });
-    const tree = component.toJSON();
+    const tree = component!.toJSON() as renderer.ReactTestRendererJSON;
 
-    // Initially jobs should be empty
     const passedJobs = JSON.parse(tree.props['data-jobs']);
     expect(passedJobs).toEqual([]);
   });
@@ -70,45 +60,46 @@ describe('App Component', () => {
     });
 
     expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith('https://blog.fellyph.com.br/wp-json/wp/v2/portfolio');
+    expect(axios.get).toHaveBeenCalledWith(
+      'https://blog.fellyph.com.br/wp-json/wp/v2/portfolio'
+    );
   });
 
   it('should render PortfolioList component', () => {
-    let component;
+    let component: renderer.ReactTestRenderer;
     act(() => {
       component = renderer.create(<App />);
     });
-    const tree = component.toJSON();
+    const tree = component!.toJSON() as renderer.ReactTestRendererJSON;
 
     expect(tree.props['data-testid']).toBe('mock-portfolio-list');
   });
 
   it('should update with fetched data', async () => {
-    let component;
+    let component: renderer.ReactTestRenderer;
     await act(async () => {
       component = renderer.create(<App />);
-      // Wait for the promise to resolve
       await Promise.resolve();
     });
 
-    const tree = component.toJSON();
+    const tree = component!.toJSON() as renderer.ReactTestRendererJSON;
     const passedJobs = JSON.parse(tree.props['data-jobs']);
     expect(passedJobs).toEqual(mockPortfolioData);
   });
 
   it('should handle API errors gracefully', async () => {
     const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
-    axios.get.mockImplementation(() => Promise.reject(new Error('Network error')));
+    (axios.get as jest.Mock).mockImplementation(() =>
+      Promise.reject(new Error('Network error'))
+    );
 
-    let component;
+    let component: renderer.ReactTestRenderer;
     await act(async () => {
       component = renderer.create(<App />);
-      // Wait for the promise to reject
       await Promise.resolve();
     });
 
-    const tree = component.toJSON();
-    // State should remain with empty jobs array
+    const tree = component!.toJSON() as renderer.ReactTestRendererJSON;
     const passedJobs = JSON.parse(tree.props['data-jobs']);
     expect(passedJobs).toEqual([]);
 
@@ -116,27 +107,27 @@ describe('App Component', () => {
   });
 
   it('should handle empty API response', async () => {
-    axios.get.mockImplementation(() => Promise.resolve({ data: [] }));
+    (axios.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: [] })
+    );
 
-    let component;
+    let component: renderer.ReactTestRenderer;
     await act(async () => {
       component = renderer.create(<App />);
-      // Wait for the promise to resolve
       await Promise.resolve();
     });
 
-    const tree = component.toJSON();
+    const tree = component!.toJSON() as renderer.ReactTestRendererJSON;
     const passedJobs = JSON.parse(tree.props['data-jobs']);
     expect(passedJobs).toEqual([]);
   });
 
-  // Snapshot test
   it('should match snapshot with initial state', () => {
-    let component;
+    let component: renderer.ReactTestRenderer;
     act(() => {
       component = renderer.create(<App />);
     });
-    const tree = component.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -144,7 +135,9 @@ describe('App Component', () => {
 describe('App Component - API Integration', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    axios.get.mockImplementation(() => Promise.resolve({ data: [] }));
+    (axios.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: [] })
+    );
   });
 
   it('should call correct endpoint', () => {

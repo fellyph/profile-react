@@ -1,22 +1,27 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  setupFiles: ['<rootDir>/setupTests.js'],
+  setupFiles: ['<rootDir>/setupTests.ts'],
   moduleNameMapper: {
-    '\\.(css|scss|sass)$': '<rootDir>/__mocks__/styleMock.js',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js'
+    '\\.(css|scss|sass)$': '<rootDir>/__mocks__/styleMock.ts',
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.ts'
   },
   testMatch: [
-    '**/__tests__/**/*.js',
-    '**/*.test.js',
-    '**/*.spec.js'
+    '**/__tests__/**/*.ts',
+    '**/__tests__/**/*.tsx',
+    '**/*.test.ts',
+    '**/*.test.tsx',
+    '**/*.spec.ts',
+    '**/*.spec.tsx'
   ],
   collectCoverageFrom: [
-    'app/assets/js/**/*.js',
-    '!app/assets/js/main.js',
-    '!app/assets/js/index.js',
+    'app/assets/js/**/*.ts',
+    'app/assets/js/**/*.tsx',
+    '!app/assets/js/main.ts',
+    '!app/assets/js/index.tsx',
     '!app/assets/js/bundle.js'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
-  verbose: true
+  verbose: true,
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 };
