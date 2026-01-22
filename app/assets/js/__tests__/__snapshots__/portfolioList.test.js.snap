@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortfolioList Component should match snapshot with empty jobs 1`] = `
+<section
+  className="jobs"
+>
+  <h2>
+    Portfolio
+  </h2>
+</section>
+`;
+
+exports[`PortfolioList Component should match snapshot with jobs 1`] = `
+<section
+  className="jobs"
+>
+  <h2>
+    Portfolio
+  </h2>
+  <div
+    data-content="<p>Description one</p>"
+    data-imagealt="Project One"
+    data-imageurl="https://example.com/thumb1.jpg"
+    data-testid="mock-portfolio-item"
+    data-title="Project One"
+  />
+  <div
+    data-content="<p>Description two</p>"
+    data-imagealt="Project Two"
+    data-imageurl="https://example.com/thumb2.jpg"
+    data-testid="mock-portfolio-item"
+    data-title="Project Two"
+  />
+  <div
+    data-content="<p>Description three</p>"
+    data-imagealt="Project Three"
+    data-imageurl="https://example.com/thumb3.jpg"
+    data-testid="mock-portfolio-item"
+    data-title="Project Three"
+  />
+</section>
+`;

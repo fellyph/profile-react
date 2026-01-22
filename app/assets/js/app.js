@@ -7,6 +7,7 @@ import PortfolioList from './portfolio/portfolioList'
 class App extends Component {
   constructor () {
     super()
+    this._isMounted = false;
     this.state = {
       jobs: [],
       source: 'https://blog.fellyph.com.br/wp-json/wp/v2/portfolio'
@@ -14,19 +15,27 @@ class App extends Component {
   }
 
   componentDidMount () {
-    this.serverRequest =
-      axios
-        .get(this.state.source)
-        .then((result) => this.setState({ jobs: result.data}));
+    this._isMounted = true;
+    axios
+      .get(this.state.source)
+      .then((result) => {
+        if (this._isMounted) {
+          this.setState({ jobs: result.data });
+        }
+      })
+      .catch((error) => {
+        // Handle API errors gracefully
+        console.error('Failed to fetch portfolio data:', error);
+      });
   }
 
   componentWillUnmount () {
-    this.serverRequest.abort()
+    this._isMounted = false;
   }
 
   render () {
     return (
-      <PortfolioList jobs={this.jobs} />
+      <PortfolioList jobs={this.state.jobs} />
     );
   }
 }
