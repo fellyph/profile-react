@@ -17,7 +17,7 @@ exports[`PortfolioItem Component should match snapshot 1`] = `
   <div
     className="description"
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "<p>This is a project description</p>",
       }
     }
