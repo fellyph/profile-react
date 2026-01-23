@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero3D Component should match snapshot 1`] = `
+<div
+  className="hero-3d"
+>
+  <div
+    aria-label="Interactive 3D scene. Use arrow keys or WASD to move, Space to speed up rotation."
+    className="hero-3d__canvas"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    role="application"
+    tabIndex={0}
+  />
+  <div
+    className="hero-3d__content"
+  >
+    <h2
+      className="hero-3d__hello"
+    >
+      Hello.
+    </h2>
+    <h1
+      className="hero-3d__title"
+    >
+      I'm Fellyph Cintra, brazilian front-end engineer based in Dublin, Ireland.
+    </h1>
+  </div>
+  <div
+    className="hero-3d__controls "
+  >
+    <p
+      className="hero-3d__hint"
+    >
+      Click the 3D scene to control it
+    </p>
+  </div>
+</div>
+`;
